@@ -33,7 +33,7 @@ class Store {
   }
 
   update() {
-    this.rows = this.updateData();
+    this.updateData();
   },
 
   select(id) {
@@ -83,6 +83,7 @@ class Store {
       //TODO: GJ: this doesn't seem to rerender correctly
       this.rows[i] = Object.assign({}, this.rows[i], {label: this.rows[i].label + ' !!!'});
     }
+    this.rows = this.rows;
   }
 }
 
@@ -118,7 +119,7 @@ export default class MyComponent extends Component {
     }
 
     this.update = () => {
-      startMeasure('add');
+      startMeasure('update');
       this.store.update();
       stopMeasure(); //TODO: on tx.commit?
     }
