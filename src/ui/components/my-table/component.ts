@@ -88,51 +88,51 @@ export default class MyComponent extends Component {
     this.create = () => {
       startMeasure('run');
       this.store.run();
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.runLots = () => {
       startMeasure('runLots');
       this.store.runLots()
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.add = () => {
       startMeasure('add');
       this.store.add();
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.update = () => {
       startMeasure('add');
       this.store.update();
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.clear = () => {
       startMeasure('clear');
       this.store.clear();
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.swapRows = () => {
       startMeasure('clear');
       this.store.swapRows();
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.select = (identifier) => {
       startMeasure('select');
       //TODO: GJ: waiting for actions to be implemented
       console.log('select', identifier);
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
 
     this.remove = (identifier) => {
       startMeasure('remove');
       //TODO: GJ: waiting for actions to be implemented
       console.log('remove', identifier);
-      stopMeasure();
+      stopMeasure(); //TODO: on tx.commit?
     }
   }
 }
