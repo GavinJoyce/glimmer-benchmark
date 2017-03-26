@@ -91,63 +91,59 @@ export default class MyComponent extends Component {
 
   @tracked store = new Store();
 
-  constructor() {
-    super();
+  create() {
+    startMeasure('run');
+    this.store.run();
+    stopMeasure();
+  }
 
-    this.create = () => {
-      startMeasure('run');
-      this.store.run();
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  runLots() {
+    startMeasure('runLots');
+    this.store.runLots()
+    stopMeasure();
+  }
 
-    this.runLots = () => {
-      startMeasure('runLots');
-      this.store.runLots()
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  add() {
+    startMeasure('add');
+    this.store.add();
+    stopMeasure();
+  }
 
-    this.add = () => {
-      startMeasure('add');
-      this.store.add();
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  addTwo() {
+    startMeasure('addTwo');
+    this.store.add(2);
+    stopMeasure();
+  }
 
-    this.addTwo = () => {
-      startMeasure('addTwo');
-      this.store.add(2);
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  update() {
+    startMeasure('update');
+    this.store.update();
+    stopMeasure();
+  }
 
-    this.update = () => {
-      startMeasure('update');
-      this.store.update();
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  clear() {
+    startMeasure('clear');
+    this.store.clear();
+    stopMeasure();
+  }
 
-    this.clear = () => {
-      startMeasure('clear');
-      this.store.clear();
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  swapRows() {
+    startMeasure('clear');
+    this.store.swapRows();
+    stopMeasure();
+  }
 
-    this.swapRows = () => {
-      startMeasure('clear');
-      this.store.swapRows();
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  select(id) {
+    startMeasure('select');
+    //TODO: GJ: waiting for actions to be implemented
+    console.log('select', id);
+    stopMeasure();
+  }
 
-    this.select = (identifier) => {
-      startMeasure('select');
-      //TODO: GJ: waiting for actions to be implemented
-      console.log('select', identifier);
-      stopMeasure(); //TODO: on tx.commit?
-    }
-
-    this.remove = (identifier) => {
-      startMeasure('remove');
-      //TODO: GJ: waiting for actions to be implemented
-      console.log('remove', identifier);
-      stopMeasure(); //TODO: on tx.commit?
-    }
+  remove(id) {
+    startMeasure('remove');
+    //TODO: GJ: waiting for actions to be implemented
+    console.log('remove', id);
+    stopMeasure();
   }
 }
