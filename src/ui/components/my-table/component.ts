@@ -17,6 +17,7 @@ var stopMeasure = function() {
     }, 0);
 };
 
+
 class Store {
   @tracked rows = [];
   @tracked selected = undefined;
@@ -27,8 +28,8 @@ class Store {
     this.selected = undefined;
   }
 
-  add() {
-    this.rows = this.rows.concat(this.buildData(1000));
+  add(count = 1000) {
+    this.rows = this.rows.concat(this.buildData(count));
   }
 
   update() {
@@ -76,6 +77,13 @@ class Store {
         data.push({id: this.id++, label: adjectives[_random(adjectives.length)] + " " + colours[_random(colours.length)] + " " + nouns[_random(nouns.length)] });
     return data;
   }
+
+  updateData(mod = 10) {
+    for (let i=0;i<this.rows.length;i+=10) {
+      //TODO: GJ: this doesn't seem to rerender correctly
+      this.rows[i] = Object.assign({}, this.rows[i], {label: this.rows[i].label + ' !!!'});
+    }
+  }
 }
 
 export default class MyComponent extends Component {
@@ -100,6 +108,12 @@ export default class MyComponent extends Component {
     this.add = () => {
       startMeasure('add');
       this.store.add();
+      stopMeasure(); //TODO: on tx.commit?
+    }
+
+    this.addTwo = () => {
+      startMeasure('addTwo');
+      this.store.add(2);
       stopMeasure(); //TODO: on tx.commit?
     }
 
