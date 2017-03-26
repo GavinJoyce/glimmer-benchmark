@@ -4,7 +4,19 @@ function _random(max) {
   return Math.round(Math.random()*1000)%max;
 }
 
-//TODO: add `startMeasure` and `stopMeasure`
+var startTime;
+var lastMeasure;
+var startMeasure = function(name) {
+    startTime = performance.now();
+    lastMeasure = name;
+};
+var stopMeasure = function() {
+    window.setTimeout(function() {
+        var stop = performance.now();
+        console.log(lastMeasure+" took "+(stop-startTime));
+    }, 0);
+};
+
 class Store {
   @tracked rows = [];
   @tracked selected = undefined;
@@ -74,37 +86,53 @@ export default class MyComponent extends Component {
     super();
 
     this.create = () => {
+      startMeasure('run');
       this.store.run();
+      stopMeasure();
     }
 
     this.runLots = () => {
+      startMeasure('runLots');
       this.store.runLots()
+      stopMeasure();
     }
 
     this.add = () => {
+      startMeasure('add');
       this.store.add();
+      stopMeasure();
     }
 
     this.update = () => {
+      startMeasure('add');
       this.store.update();
+      stopMeasure();
     }
 
     this.clear = () => {
+      startMeasure('clear');
       this.store.clear();
+      stopMeasure();
     }
 
     this.swapRows = () => {
+      startMeasure('clear');
       this.store.swapRows();
+      stopMeasure();
     }
 
     this.select = (identifier) => {
-      //TODO: GJ: waiting for actions
+      startMeasure('select');
+      //TODO: GJ: waiting for actions to be implemented
       console.log('select', identifier);
+      stopMeasure();
     }
 
     this.remove = (identifier) => {
-      //TODO: GJ: waiting for actions
+      startMeasure('remove');
+      //TODO: GJ: waiting for actions to be implemented
       console.log('remove', identifier);
+      stopMeasure();
     }
   }
 }
